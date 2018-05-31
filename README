@@ -1,0 +1,36 @@
+Splunk test framework
+========================
+
+Summary:
+The Splunk test framwork is built for Splunk homework
+The major purpose is to test the Splunk REST API
+
+Tasks:
+1. Test Splunk REST API end point
+  a. GET request
+  b. POST request
+
+Automation:
+The Splunk test framework should handle (automate) the following tasks:
+1. Test environment set up:
+  a. automate the process add/remove DUTs (device under test)
+  b. automate the process pre-configure the test environment, test execution, and post processing test logs, generating a final log
+  c. automate the process monitering the DUTs during the tests
+2. API for test REST API:
+  a. utility tools for handling REST API response data
+    1. validating the data
+	2. math lib:
+	  a. sort
+	  b. search
+	  c. calcute sum
+	3. report parser
+  b. OPTIONAL: deploy the framework on remote cloud server
+
+===================================================================
+
+Planning:
+TODO: automation controller setup
+TODO: OPTIONAL - DUTs set up (PCs, phones, tablets, etc...)
+TODO: test script
+TODO: develop API for testing REST API
+TODO: deploy the framework on cloud
