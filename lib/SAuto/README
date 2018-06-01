@@ -1,0 +1,16 @@
+SAuto README
+================
+
+Summary:
+SAuto is the automation test framework for Splunk homework
+
+============================================================
+
+SAuto.pm:
+The core for the framework, it handles the devices connectivity and communication
+
+Devices.pm:
+The library for devices control
+
+TODO: General.pm:
+The Generic functions such as print_info() print_debug() will come here

@@ -1,0 +1,26 @@
+Splunk homework library overview
+====================================
+
+SAuto:
+Splunk automation framework core. It handle the following:
+1. devices connectivity
+2. devices communication
+  a. serial //TODO
+  b. TCP/IP //TODO
+  c. bluetooth //TODO
+
+SAuto should be deploy on both controller and DUTs
+
+===========================================================
+
+Splunk:
+Splunk movie REST API test libraries
+All homework related API should come here
+
+===========================================================
+
+Utility:
+  Math.pm - Math library, functions such as sorting and search comes here
+  Result_Parser.pm - log parser, it should generate a report
+
+===========================================================
