@@ -15,11 +15,6 @@ my %regex_hash; #** @brief hashmap holding all regex for parsing
 
 my @result; #** @brief array holding the filtered reuslt
 
-## TEMP my @diagnostic; #** @brief a double array holding the report
-## TEMP my @routing; #** @brief a double array holding the report
-## TEMP my @guidance; #** @brief a double array holding the report
-## TEMP my @angles; #** @brief a double array holding the report
-
 ###################### Constents #######################
 our $city = 'Los_Angels';
 our $city_boundary = 'la_boundary';
@@ -43,6 +38,7 @@ sub pretest {
 	return 0;
 }
 
+############################################################
 #** @method public test
 # @brief execute the test
 #*
@@ -58,6 +54,7 @@ sub test {
 # @brief teardown the test environment
 #*
 
+############################################################
 sub posttest {
 	open(my $logfile, '>>', "$city-report.log");
 	open(my $csvfile, '>>', "$city-report.csv");

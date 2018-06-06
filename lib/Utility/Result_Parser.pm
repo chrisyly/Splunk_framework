@@ -1,4 +1,4 @@
-package utility::Result_Parser;
+package Result_Parser;
 use strict;
 use warnings;
 
