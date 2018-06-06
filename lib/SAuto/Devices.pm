@@ -1,5 +1,6 @@
-package SAtuo::Devices;
+package Devices;
 use strict;
 use warnings;
+
 
 1;

@@ -1,4 +1,4 @@
-package Utility::Math;
+package Math;
 use strict;
 use warnings;
 
