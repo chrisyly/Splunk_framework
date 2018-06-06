@@ -1,0 +1,318 @@
+Negetive Scenatial:
+splunk_framework $ ./splunk_movie.pl
+[2018-06-06T08:02:10][LOG] =============== Test Start ==================
+[2018-06-06T08:02:10][LOG] Splunk Movies REST API GET request initialized...
+[2018-06-06T08:02:10][ERROR] Movie name is a must! at MovieAPI:lib/Splunk/MovieAPI.pm:21
+TODO: Error code
+[2018-06-06T08:02:10][DEBUG] =============== Test Finished ================ at main:./splunk_movie.pl:40
+[2018-06-06T08:02:10][LOG] ======================= End of Test ======================
+
+
+Normal Scenarial:
+splunk_framework $ ./splunk_movie.pl
+[2018-06-06T08:05:14][LOG] =============== Test Start ==================
+[2018-06-06T08:05:14][LOG] Splunk Movies REST API GET request initialized...
+[2018-06-06T08:05:14][LOG] Number of count is not defined, using REST API default.
+[2018-06-06T08:05:14][LOG] Sending Splunk movie GET request: https://splunk.mocklab.io/movies?q=batman
+{
+  "results": [
+    {
+      "vote_count": 12,
+      "id": 287757,
+      "video": true,
+      "vote_average": 5.8,
+      "title": "Scooby-Doo Meets Dante",
+      "popularity": 2.714803,
+      "poster_path": "https://www.dropbox.com/s/8i8v4ak8tnp03w4/action-blur-electronics-247932.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "Scooby-Doo Meets Batman",
+      "genre_ids": [
+        10751,
+        16
+      ],
+      "adult": false,
+      "overview": "Scooby-Doo Meets Batman is a video compilation from Warner Bros. Home Entertainment. It consists of two episodes from Hanna-Barbera's The New Scooby-Doo Movies, \"The Dynamic Scooby Doo Affair\" and \"The Caped Crusader Caper\", where Scooby-Doo and the gang team up with Batman and Robin to capture Joker and the Penguin.",
+      "release_date": "2002-08-20"
+    },
+    {
+      "vote_count": 6,
+      "id": 204649,
+      "video": false,
+      "vote_average": 7,
+      "title": "Batman: Beyond Batman",
+      "popularity": 1.214846,
+      "poster_path": "https://www.dropbox.com/s/opfcp4ua5fmdszj/actor-actress-adult-974477.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "Batman: Beyond Batman",
+      "genre_ids": [],
+      "backdrop_path": null,
+      "adult": false,
+      "overview": "Behind the scenes documentary highlighting production design, props &amp; gadgets, batmobile/batsuit design, and the music of the 1989 Batman.",
+      "release_date": "2005-07-04"
+    },
+    {
+      "vote_count": 5,
+      "id": 404463,
+      "video": false,
+      "vote_average": 4.7,
+      "title": "Dante",
+      "popularity": 1.507619,
+      "poster_path": "https://www.dropbox.com/s/1qcl5f3o1dmsn0d/adult-beard-electronics-819848.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "Batman: Dante",
+      "genre_ids": [
+        28,
+        80,
+        18
+      ],
+      "adult": false,
+      "overview": "Batman intervenes in the life of a junkie.",
+      "release_date": "2016-08-05"
+    },
+    {
+      "vote_count": 50,
+      "id": 411736,
+      "video": false,
+      "vote_average": 7,
+      "title": "Batman: Return of the Kayak Crusaders",
+      "popularity": 4.544005,
+      "poster_path": "https://www.dropbox.com/s/0j5o30t1h21u2pw/architecture-bluebird-theatre-building-208647.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "Batman: Return of the Caped Crusaders",
+      "genre_ids": [
+        28,
+        16,
+        35
+      ],
+      "adult": false,
+      "overview": "Adam West and Burt Ward returns to their iconic roles of Batman and Robin. Featuring the voices of Adam West, Burt Ward, and Julie Newmar, the film sees the superheroes going up against classic villains like The Joker, The Riddler, The Penguin and Catwoman, both in Gotham City… and in space.",
+      "release_date": "2016-10-08"
+    },
+    {
+      "vote_count": 16,
+      "id": 411802,
+      "video": false,
+      "vote_average": 5.5,
+      "title": "Batman Unlimited: Mechs vs. Mutants",
+      "popularity": 2.984441,
+      "poster_path": "https://www.dropbox.com/s/xs5w5v43lpfg4vj/auditorium-chairs-comfortable-269140.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "Batman Unlimited: Mechs vs. Mutants",
+      "genre_ids": [
+        16
+      ],
+      "adult": false,
+      "overview": "Mr. Freeze turns Killer madam and Bane into super-sized monsters, and they bash their way through downtown Gotham until the Caped Crusader and his team of heroes join the fight in their giant robot mechs.",
+      "release_date": "2016-08-30"
+    },
+    {
+      "vote_count": 10891,
+      "id": 49026,
+      "video": false,
+      "vote_average": 7.6,
+      "title": "The Dark Knight Rises",
+      "popularity": 58.004625,
+      "poster_path": "https://www.dropbox.com/s/tr9lhmsukyr62nf/black-and-white-caixa-belas-artes-cinema-65437.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "The Dark Knight Rises",
+      "genre_ids": [
+        28,
+        80,
+        18,
+        53
+      ],
+      "adult": false,
+      "overview": "Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent's crimes to protect the late attorney's reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham's finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.",
+      "release_date": "2012-07-16"
+    },
+    {
+      "vote_count": 16,
+      "id": 20776,
+      "video": false,
+      "vote_average": 5.8,
+      "title": "Return to the Batcave: The Misadventures of Adam and Burt",
+      "popularity": 2.997837,
+      "poster_path": "https://www.dropbox.com/s/l3qyiomplo1xy2p/candy-delicious-eating-2904.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "Return to the Batcave: The Misadventures of Adam and Burt",
+      "genre_ids": [
+        35,
+        28,
+        99
+      ],
+      "adult": false,
+      "overview": "Adam West and Burt Ward are taken on a crazy adventure when the Batmobile is stolen from a car museum and they must track down the thief and return it. After solving a puzzle, they realize that the clues to finding the fiend who stole the Batmobile are hidden in their past. During the search, they flashback to their three seasons in tights, including their many sexual escapades.",
+      "release_date": "2003-03-09"
+    },
+    {
+      "vote_count": 6,
+      "id": 93560,
+      "video": false,
+      "vote_average": 6.2,
+      "title": "Batman and Robin",
+      "popularity": 1.329602,
+      "poster_path": "https://www.dropbox.com/s/2jda8hu20y99jxl/cinema-food-movie-theater-33129.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "Batman and Robin",
+      "genre_ids": [
+        28,
+        878,
+        53
+      ],
+      "adult": false,
+      "overview": "This 15-chapter serial pits Batman and Robin against The Wizard, who uses a device that allows him to control machinery to hold the city hostage.",
+      "release_date": "1949-05-26"
+    },
+    {
+      "vote_count": 5,
+      "id": 186579,
+      "video": false,
+      "vote_average": 8,
+      "title": "Batman Tech",
+      "popularity": 1.252347,
+      "poster_path": "https://www.dropbox.com/s/2jda8hu20y99jxl/cinema-food-movie-theater-33129.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "Batman Tech",
+      "genre_ids": [
+        99
+      ],
+      "adult": false,
+      "overview": "He's caped, cowled and the coolest superhero of them all, because underneath that Batsuit, Batman only has his human strength and intellect to rely on. That and the greatest arsenal of crime fighting weaponry ever devised. But just where does comic book science fiction end and scientific fact begin? What technologies are behind the gadgets in Batman's utility belt? And just how plausible is the Batmobile? Get ready for a real life trip to the Batcave as we reveal the secrets behind Batman Tech.",
+      "release_date": "2008-07-20"
+    },
+    {
+      "vote_count": 1,
+      "id": 138757,
+      "video": false,
+      "vote_average": 5,
+      "title": "James Batman",
+      "popularity": 1.043456,
+      "poster_path": "/sWa1Y5QhGuJMjw8uuFoggGLqZ0y.jpg",
+      "original_language": "en",
+      "original_title": "James Batman",
+      "genre_ids": [
+        28,
+        12,
+        35,
+        878
+      ],
+      "backdrop_path": "https://www.dropbox.com/s/2jda8hu20y99jxl/cinema-food-movie-theater-33129.jpg?dl=0",
+      "adult": false,
+      "overview": "An evil syndicate is set to conquer the world, and the mission is to stop them from fulfilling their viscious plans. The consequences of their failure may mean the destruction of all dissenting countries who stand in their way. All countries must bow to their power before the deadline of five days expires. The solution is sending in their best operatives; James Hika, and the dynamic duo of Batman and Robin. They are first detested with working with each other, but for the safety of the world, they join forces. Through thick and thin, they survive the syndicate's plan to dispose of them. They get closer to stopping the syndicate plan, but there is a traitor in their midst. Will this deter them from achieving their goal?",
+      "release_date": "1966-10-26"
+    },
+    {
+      "vote_count": 0,
+      "id": 451570,
+      "video": false,
+      "vote_average": 0,
+      "title": "Batman Jr.",
+      "popularity": 1.000177,
+      "poster_path": null,
+      "original_language": "en",
+      "original_title": "Batman Jr.",
+      "genre_ids": [
+        28,
+        18,
+        53
+      ],
+      "adult": false,
+      "overview": "After Batman is murdered by the Jokers son Michael, Batmans son Jeffery  decides to finish his fathers job in this fan made fail.",
+      "release_date": ""
+    },
+    {
+      "vote_count": 28,
+      "id": 300424,
+      "video": false,
+      "vote_average": 6.3,
+      "title": "LEGO DC Comics Super Heroes: Batman: Be-Leaguered",
+      "popularity": 4.67096,
+      "poster_path": "https://www.dropbox.com/s/2jda8hu20y99jxl/cinema-food-movvvie-theater-33129.jpg?dl=0",
+      "original_language": "en",
+      "original_title": "LEGO DC Comics Super Heroes: Batman: Be-Leaguered",
+      "genre_ids": [
+        28,
+        12,
+        16,
+        10751
+      ],
+      "adult": false,
+      "overview": "Superman wants Batman to join his new superhero team, but Batman prides himself on being a self-sufficient loner.",
+      "release_date": "2014-10-27"
+    },
+    {
+      "vote_count": 17,
+      "id": 269246,
+      "video": false,
+      "vote_average": 7.5,
+      "title": "Batman James Batman 75th Anniversary Short",
+      "popularity": 2.068931,
+      "original_language": "en",
+      "original_title": "Batman Beyond Darwyn Cooke's Batman 75th Anniversary Short",
+      "genre_ids": [
+        28,
+        16,
+        878,
+        10770
+      ],
+      "adult": false,
+      "overview": "Terry faces off against a much younger Batman",
+      "release_date": "2014-04-19"
+    },
+    {
+      "vote_count": 14490,
+      "id": 155,
+      "video": false,
+      "vote_average": 8.3,
+      "title": "The Dark Knight",
+      "popularity": 38.263954,
+      "original_language": "en",
+      "original_title": "The Dark Knight",
+      "genre_ids": [
+        18,
+        28,
+        80,
+        53
+      ],
+      "adult": false,
+      "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+      "release_date": "2008-07-16"
+    },
+    {
+      "vote_count": 1,
+      "id": 438741,
+      "video": false,
+      "vote_average": 8,
+      "title": "Being Batman",
+      "popularity": 1.080175,
+      "original_language": "en",
+      "original_title": "Being Batman",
+      "genre_ids": [
+        99
+      ],
+      "adult": false,
+      "overview": "Ryan Freeman’s profile documentary, Being Batman, gives us a tiny glimpse into the life of Stephen Lawrence—a man who has self monikered himself the “Brampton Batman.” Lawrence, dressed as the iconic hero, ventures out at night to patrol the city streets. He’s a real-life Bruce Wayne, complete with an outfit and arsenal that would make any cosplayer green with envy.",
+      "release_date": "2017-01-30"
+    },
+    {
+      "vote_count": 0,
+      "id": 241226,
+      "video": false,
+      "vote_average": 0,
+      "title": "Batman: A Gotham Fairytale",
+      "popularity": 1.574088,
+      "original_language": "en",
+      "original_title": "Batman: A Gotham Fairytale",
+      "genre_ids": [
+        16,
+        53,
+        28,
+        18
+      ],
+      "adult": false,
+      "overview": "Composed of over 200 black and white illustrations, it depicts the dark imagination of a little girl as she's listening to her grandmother tell her a bedtime fairytale.",
+      "release_date": "2013-09-05"
+    }
+  ]
+}[2018-06-06T08:05:14][DEBUG] =============== Test Finished ================ at main:./splunk_movie.pl:40
+[2018-06-06T08:05:14][LOG] ======================= End of Test ======================
