@@ -3,8 +3,13 @@ use strict;
 use warnings;
 use DateTime;
 use JSON;
+use Utility::Utility;
 use Term::ANSIColor qw(:constants);
 local $Term::ANSIColor::AUTORESET = 1;
+
+#################### Constents ###################
+our $pass = 0; #** @brief the pass count for the test
+our $fail = 0; #** @brief the failure count for the test
 
 #** @method public systemcall ($command, $expected_return_code)
 # @brief execute and return the system call stdout
@@ -27,30 +32,92 @@ sub systemcall {
 ########################################################
 sub logging {
     my $string = shift @_;
-    my $date = DateTime->now;
-    print "[$date][LOG] $string\n";
+    Utility::logging($string);
 }
 
 sub warning {
     my $string = shift @_;
-    my $date = DateTime->now;
-	my ($package, $filename, $line) = caller;
-    print BOLD YELLOW "[$date][WARNING] $string at $package:$filename:$line\n";
+	Utility::warning($string);
 }
 
 sub error {
     my $string = shift @_;
-    my $date = DateTime->now;
-	my ($package, $filename, $line) = caller;
-    print BOLD RED "[$date][ERROR] $string at $package:$filename:$line\n";
+	Utility::error($string);
 }
 
 sub debug {
     my $string = shift @_;
-    my $date = DateTime->now;
-	my ($package, $filename, $line) = caller;
-    print BOLD BLUE "[$date][DEBUG] $string at $package:$filename:$line\n";
+	Utility::debug($string);
 }
 #########################################################
+
+#** @method pass ($message)
+# @brief increment pass count, if $message is provided print out the pass info
+#*
+sub pass {
+	my $message = shift @_;
+	$pass++;
+	if (defined $message) {
+		my $date = DateTime->now;
+		my ($package, $filename, $line) = caller;
+		print BOLD GREEN "[$date][PASS] $message\n";
+	}
+}
+
+#** @method fail ($message)
+# @brief increment fail count, if $message is provided print out the fail info
+#*
+sub fail {
+	my $message = shift @_;
+	$fail++;
+	if (defined $message) {
+		my $date = DateTime->now;
+		my ($package, $filename, $line) = caller;
+		print BOLD RED "[$date][FAIL] $message\n";
+	}
+}
+
+#** @method checkPass ($flag, $exp_flag, $message)
+# @brief check if the $flag(bool) is equal to $exp_flag(bool), increment pass or fail count
+#*
+sub checkPass {
+	my ($flag, $exp_flag, $message) = @_;
+	if ($flag == $exp_flag) {
+		pass($message);
+	} else {
+		fail($message);
+	}
+}
+
+#** @method getTotalCount
+# @brief return the total $pass + $fail count
+#*
+sub getTotalCount {
+	return ($pass + $fail);
+}
+
+#** @method getPassCount
+# @brief return the $pass count
+#*
+sub getPassCount {
+	return $pass;
+}
+
+#** @method getFailCount
+# @brief return the $fail count
+#*
+sub getFailCount {
+	return $fail;
+}
+
+sub getSummary {
+	logging("Total check points: ".getTotalCount());
+	logging("Pass Count: $pass");
+	logging("Failure Count: $fail");
+	if ($fail) {
+		return 0;
+	}
+}
+
 1;
 #__END
