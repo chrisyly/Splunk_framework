@@ -6,31 +6,83 @@ use REST::Client;
 local $Term::ANSIColor::AUTORESET = 1;
 
 ################# Constants #################
+# @brief REST Client initialize
 my $RESTClient = REST::Client->new({
 	host => 'https://splunk.mocklab.io',
 	timeout => 10,
 });
-$RESTClient->addHeader('Accept', 'application/json');
 #############################################
 
+#** @method public getMovie ($q, $count)
+# @brief $q - the string name of the movie
+# @brief $count - the total count of the movies getting from REST API
+#*
 sub getMovie {
 	my ($q, $count) = @_;
 	my $query = 'movies?';
+	Utility::logging("Splunk Movies REST API GET request initialized...");
 	if (not defined $q) {
-		Utility::error('Movie name is a must!');
-		return 'TODO: Error code';
+		Utility::error('	Movie name is a must!');
+		## return "TODO: Error code\n"; ## comment out for negative test
 	} else {
 		$query .= "q=$q";
+		Utility::logging("	Movie name: [$q]");
 	}
 	if (not defined $count) {
-		Utility::logging('Number of count is not defined, using REST API default.');
+		Utility::logging('	Number of count is not defined, using REST API default.');
 	} else {
 		$query .= "&count=$count";
+		Utility::logging("	Movies shown in list: [$count]")
 	}
+	Utility::logging("Sending Splunk movie GET request: [https://splunk.mocklab.io/$query]");
+	$RESTClient->GET($query, {'Accept' => 'application/json'});
+}
 
-	Utility::logging("Sending Splunk movie GET request: https://splunk.mocklab.io/$query");
-	$RESTClient->GET($query);
-	return $RESTClient->responseContent();
+#** @method public postMovie ($payload)
+# @brief $payload - the content of the post request, example:{"name":"<string>superman", "description":"<string>ABC"}
+#*
+sub postMovie {
+	my $payload = shift @_;
+	my $query = 'movies';
+	Utility::logging("Splunk Movies REST API POST request initialized...");
+	if (not defined $payload) {
+		Utility::error("	Payload content is a must!");
+		## return "TODO: Error code\n"; ## comment out for negative test
+	} else {
+		Utility::logging("	Movie name and description:\n	[$payload]");
+	}
+	Utility::logging("Sending Splunk movie POST request: [https://splunk.mocklab.io/$query]");
+	$RESTClient->POST($query, $payload, {'Content-Type' => 'application/json'});
+}
+
+#** @method public getResponseCode()
+# @return $RESTClient->responseCode() - return the response code of the last request
+#*
+sub getResponseCode() {
+	my $code = $RESTClient->responseCode();
+	Utility::logging("	Return Code: [$code]");
+	return $code;
+}
+
+#** @method public getResponseContent()
+# @return $RESTClient->responseContent() - return the response content of the last request
+#*
+sub getResponseContent() {
+	my $content = $RESTClient->responseContent();
+	Utility::logging("	Return Content:\n	[$content]");
+	return $content;
+}
+
+sub checkCode {
+	my $code = shift @_;
+	my $responseCode = $RESTClient->responseCode();
+	if (defined $code && ($code eq $responseCode)) {
+		Utility::debug("	Return Code [$responseCode] is equal to $code");
+		return 1;
+	} else {
+		Utility::debug("	Return Code [$responseCode] is not equal to $code");
+		return 0;
+	}
 }
 
 #** @method public report_generator ($input_result_line)

@@ -27,7 +27,7 @@ exit(&pretest & &test & &posttest);
 #*
 sub pretest {
 	#** remove the old logs
-	return 0;
+	return 1;
 }
 
 ############################################################
@@ -35,10 +35,18 @@ sub pretest {
 # @brief execute the test
 #*
 sub test {
-	SAuto::logging("=============== Test Start ==================");
-	print MovieAPI::getMovie('batman');
+	SAuto::debug("=============== Test Start ==================");
+	MovieAPI::postMovie('{"name":"superman", "description":"the best movie ever made"}');
+	## MovieAPI::getResponseCode();
+	## MovieAPI::getResponseContent();
+	SAuto::checkPass(MovieAPI::checkCode(200),1,"Post Request expect return code 200");
+	SAuto::checkPass(MovieAPI::checkCode(400),0,"Post Request expect not return 400");
+	SAuto::checkPass(MovieAPI::checkCode(400),1,"Post Request expect return 400");
+	## MovieAPI::getMovie('hello', 1);
+	## SAuto::logging('	Return code: ['.MovieAPI::getResponseCode().']');
+	## SAuto::logging("	Return content:\n".MovieAPI::getResponseContent());
 	SAuto::debug("=============== Test Finished ================");
-	return 0;
+	return 1;
 }
 
 ############################################################
@@ -46,6 +54,7 @@ sub test {
 # @brief teardown the test environment
 #*
 sub posttest {
-	SAuto::logging("======================= End of Test ======================");
-	return 0;
+	my $result = SAuto::getSummary();
+	SAuto::debug("======================= End of Test ======================");
+	return $result;
 }
