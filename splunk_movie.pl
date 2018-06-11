@@ -36,15 +36,20 @@ sub pretest {
 #*
 sub test {
 	SAuto::debug("=============== Test Start ==================");
-	MovieAPI::postMovie('{"name":"superman", "description":"the best movie ever made"}');
+	## MovieAPI::postMovie('{"name":"superman", "description":"the best movie ever made"}');
 	## MovieAPI::getResponseCode();
 	## MovieAPI::getResponseContent();
-	SAuto::checkPass(MovieAPI::checkCode(200),1,"Post Request expect return code 200");
-	SAuto::checkPass(MovieAPI::checkCode(400),0,"Post Request expect not return 400");
-	SAuto::checkPass(MovieAPI::checkCode(400),1,"Post Request expect return 400");
-	## MovieAPI::getMovie('hello', 1);
+	## SAuto::checkPass(MovieAPI::checkCode(200),1,"Post Request expect return code 200");
+	## SAuto::checkPass(MovieAPI::checkCode(400),0,"Post Request expect not return 400");
+	## SAuto::checkPass(MovieAPI::checkCode(400),1,"Post Request expect return 400");
+	MovieAPI::getMovie('hello', 1);
 	## SAuto::logging('	Return code: ['.MovieAPI::getResponseCode().']');
 	## SAuto::logging("	Return content:\n".MovieAPI::getResponseContent());
+	## SAuto::checkPass(MovieAPI::SPL_001(), 0, "[SPL_001] No two movies should have the same image.");
+	## SAuto::checkPass(MovieAPI::SPL_002(), 0, "[SPL_002] All poster_path links must be valid. poster_path link of null is also acceptable.");
+	## SAuto::checkPass(MovieAPI::SPL_004(), 0, "[SPL_004] The number of movies whose sum of \"genre_ids\" > 400 is no more than 7!");
+	## SAuto::checkPass(MovieAPI::SPL_005(), 0, "[SPL_005] There is at least one movie in the database whose title has a palindrome in it.");
+	SAuto::checkPass(MovieAPI::SPL_006(), 0, "[SPL_006] There are at least two movies in the database whose title contain the title of another movie.");
 	SAuto::debug("=============== Test Finished ================");
 	return 1;
 }

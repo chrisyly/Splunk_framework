@@ -2,6 +2,7 @@ package Utility;
 use strict;
 use warnings;
 use DateTime;
+use JSON;
 use Term::ANSIColor qw(:constants);
 local $Term::ANSIColor::AUTORESET = 1;
 
@@ -15,7 +16,8 @@ sub systemcall {
     my $output = `$command`;
     my $return_code = $?;
     if (defined $exp_return && !($exp_return == $return_code)) {
-        error("System Call return value is [$return_code] != [$exp_return]");
+        error("System Call [$command] return value is [$return_code] != [$exp_return]");
+		return $return_code;
     }
     return $output;
 }
@@ -28,6 +30,15 @@ sub hash_to_array {
     my $array = shift;
     my @array = values %{$array};
     return @array;
+}
+
+#** @method public read_json ($json_string)
+# @brief return the perl object from input json string
+# @return JSON
+#*
+sub get_json {
+	my $input = shift @_;
+	return decode_json($input);
 }
 
 ################### Printing Methods ###################

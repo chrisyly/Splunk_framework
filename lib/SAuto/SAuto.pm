@@ -15,14 +15,15 @@ our $fail = 0; #** @brief the failure count for the test
 # @brief execute and return the system call stdout
 # @brief if the $exp_return value applied, print and exit with 406 code if return code is not match (TEMP disabled)
 # @return $output - system call stdout
+# NOTE: This is a stand alone systemcall, its the same systemcall in Utility:systemcall
 #*
 sub systemcall {
 	my ($command, $exp_return) = @_;
 	my $output = `$command`;
 	my $return_code = $?;
 	if (defined $exp_return && !($exp_return == $return_code)) {
-		error("System Call return value is [$return_code] != [$exp_return]");
-		# exit 406;
+		error("System Call [$command] return value is [$return_code] != [$exp_return]");
+		return $return_code;
 	}
 	return $output;
 }
