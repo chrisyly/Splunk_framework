@@ -26,11 +26,58 @@ The Splunk test framework should handle (automate) the following tasks:
 	3. report parser
   b. OPTIONAL: deploy the framework on remote cloud server
 
+======================== How to run =======================
+The current SAuto is implemented with Perl v5.26.1, earlier packages is not tested
+List of Perl dependency:
+1.DateTime
+2.JSON
+3.REST::Client
+
+To install the dependency:
+sudo cpan install <package_name>
+
+Splunk Movie tests scripts are under:
+<git_root_folder>/splunk_framework/scripts/splunk
+
+Splunk Movie libs are under:
+<git_root_folder>/splunk_framework/lib/Splunk
+
+steps:
+1. give the proper authority to splunk_framework/scripts/splunk scripts
+2. cd <git_root_folder>/splunk_framework/scripts/splunk; ./test_plan.sh
+
+======================== Known bugs from Splunk Movie API =========================
+1. GET request will always return 'batman' result (return code: 200) no matter other strings being put in the query
+2. GET request will always ignore the <count> query (return code: 200) no matter what value is put in the query
+3. SPL_001 failed, movie has the same image in database
+4. SPL_002 failed, invalid non-null image url is detected
+5. SPL_003 failed, the movie in database is not correctly sorted according to the RULE
+
+6. POST request will always return code: 200. No matter what payload (name and description) is inputed
+7. POST request will not add the movie to the database. (Varified by running GET right after POST)
+8. because (7) failed, none of the SPL tests are valid to test POST request
+
+======================== About SAuto Framework ==========================
+SAuto is an automation framework developed for remote devices deploy
+and control.
+
+Devices with SAuto framework installed having the following features: (Under development)
+1. Devices are discoveriable and configurable through local/internet/serial/etc... network
+2. Any node (devices) can preform as controller/clients and recurit any available
+clients with requirements throught network
+3. Each node provide a cloud services to discover and maintain the discovery network - a minimum at least one routing server is required
+4. A could server is providing and responsible for uploading and downloading user defined lib/packages/etc...
+
+TODO list:
+*. install script to download and install the framework
+1. discovery process
+2. infurstructure
+3. CI process for integrating libs/packages
+4. upper/lower communication port/protocal for more devices supports
 ===================================================================
 
 Planning:
 TODO: automation controller setup
 TODO: OPTIONAL - DUTs set up (PCs, phones, tablets, etc...)
-TODO: test script
 TODO: develop API for testing REST API
 TODO: deploy the framework on cloud
