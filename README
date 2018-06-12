@@ -28,13 +28,17 @@ The Splunk test framework should handle (automate) the following tasks:
 
 ======================== How to run =======================
 The current SAuto is implemented with Perl v5.26.1, earlier packages is not tested
+
+OS environment:
+Linux system, (Ubuntu 14.04 and above recommended)
+
+To install the dependency:
+sudo cpan install <package_name>
+
 List of Perl dependency:
 1.DateTime
 2.JSON
 3.REST::Client
-
-To install the dependency:
-sudo cpan install <package_name>
 
 Splunk Movie tests scripts are under:
 <git_root_folder>/splunk_framework/scripts/splunk
