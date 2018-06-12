@@ -61,7 +61,7 @@ sub pass {
 	if (defined $message) {
 		my $date = DateTime->now;
 		my ($package, $filename, $line) = caller;
-		print BOLD GREEN "[$date][PASS] $message\n";
+		print BOLD GREEN "[$date][PASS] 	$message\n";
 	}
 }
 
@@ -74,7 +74,7 @@ sub fail {
 	if (defined $message) {
 		my $date = DateTime->now;
 		my ($package, $filename, $line) = caller;
-		print BOLD RED "[$date][FAIL] $message\n";
+		print BOLD RED "[$date][FAIL] 	$message\n";
 	}
 }
 
@@ -111,12 +111,18 @@ sub getFailCount {
 	return $fail;
 }
 
+#** @method getSummary
+# @brief print pass/fail/total test counter to the stdout
+# @return false if there is any test failed
+#*
 sub getSummary {
+	logging("=================== Summary session =======================");
 	logging("Total check points: ".getTotalCount());
 	logging("Pass Count: $pass");
 	logging("Failure Count: $fail");
+	logging("===========================================================");
 	if ($fail) {
-		return 0;
+		return 1;
 	}
 }
 

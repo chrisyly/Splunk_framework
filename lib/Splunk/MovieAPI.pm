@@ -89,7 +89,6 @@ sub checkCode {
 	}
 }
 
-# TODO
 #** @method public SPL_001 ()
 # @brief No two movies should have the same image (poster_path in response)
 #*
@@ -133,11 +132,39 @@ sub SPL_002 {
 # @brief Rule #1 Movies with genre_ids == null should be first in response.
 # @brief Rule #2, if multiple movies have genre_ids == null, then sort by id (ascending). For movies that have non-null genre_ids, results should be sorted by id (ascending)
 #*
+
+## NOTE: is this required to sort the response or checking the response is sorted?
 sub SPL_003 {
 	my $json = Utility::get_json($RESTClient->responseContent());
 	my @lists = @{$json->{results}};
+	my $isNull = 1;
+	my $id = -1;
 	Utility::logging("======= SPL_003 =======");
-	# TODO
+	## check the response is sorted correctly
+	foreach my $movie (@lists) {
+		if (!@{$movie->{genre_ids}} && $isNull) {
+			if ($movie->{genre_ids} > $id) {
+				$id = $movie->{id};
+			} else {
+				Utility::warning("	Movie [$movie->{title}] has null genre_ids but id:[$movie->{title}] is less than previous id:[$id]! Breaking Rule #2");
+				return 1;
+			}
+		} elsif (!@{$movie->{genre_ids}} && !$isNull) {
+			Utility::warning("	Movie [$movie->{title}] has null genre_ids but previous genre_ids is not null! Breaking Rule #1");
+			return 1;
+		} elsif (@{$movie->{genre_ids}} && $isNull) {
+			$isNull = 0;
+			$id = $movie->{id};
+		} elsif (@{$movie->{genre_ids}} && !$isNull) {
+			if($movie->{id} > $id) {
+				$id = $movie->{id};
+			} else {
+				Utility::warning("  Movie [$movie->{title}] has non null genre_ids but id:[$movie->{title}] is less than id:[$id]! Breaking Rule #2");
+				return 1;
+			}
+		}
+	}
+	return 0;
 }
 
 #** @method public SPL_004 ()
@@ -154,6 +181,7 @@ sub SPL_004 {
 			$sum += $genre_ids;
 		}
 		if ($sum > 400) {
+			Utility::logging("	Movie:[$movie->{title}] Id:[$movie->{id}] - Genre_ids:[$sum]");
 			$count++;
 		}
 		if ($count > 7) {
