@@ -1,8 +1,12 @@
+Automation framework is now merged into Simple Automation (SAuto) Project
+This repo is no longer watched
+
+
 Splunk test framework
 ========================
 
 Summary:
-The Splunk test framwork is built for Splunk homework
+The Splunk test framwork is built for Splunk homsimple.sqliteework
 The major purpose is to test the Splunk REST API
 
 Tasks:
